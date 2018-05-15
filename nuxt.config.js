@@ -51,5 +51,8 @@ module.exports = {
   },
   plugins:[
     "~/plugins/index.js"
+  ],
+  modules:[
+    '@nuxtjs/pwa',
   ]
 }

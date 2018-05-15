@@ -20,7 +20,7 @@ import PriseList from '~/components/PriseList.vue'
 import PriseSetting from '~/components/PriseSetting.vue'
 import AppLogo from '~/components/AppLogo.vue'
 
-const defaltData = [
+const defaultData = [
   {
     name: "サーモスタンブラー",
     amount: 50,

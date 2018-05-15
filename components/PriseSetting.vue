@@ -1,31 +1,31 @@
 <template>
   <div class="prise__content">
     <div class="row prise__item"
-         v-for="(item,key) in [1,1,1,1,1]"
+         v-for="(item,key) in prises"
          :key="key">
       <div class="col-auto">
-        <span class="prise__circle" :style="{backgroundColor:'#333'}"/>
+        <span class="prise__circle" :style="{backgroundColor:item.color}"/>
       </div>
       <div class="col">
-        <el-input></el-input>
+        <el-input v-model="item.name"></el-input>
       </div>
       <div class="col">
         <span class="prise__number">
-          <el-input></el-input>
+          <el-input v-model="item.amount"></el-input>
         </span>
         &nbsp;
         <a >
-          <i class="el-icon-plus"></i>
+          <i class="el-icon-plus" @click="item.amount++"></i>
         </a>
         &nbsp;
         <a >
-          <i class="el-icon-minus"></i>
+          <i class="el-icon-minus" @click="item.amount--"></i>
         </a>
       </div>
     </div>
 
     <div class="text-center">
-      <a tabindex="" class="btn btn-light">
+      <a tabindex="" class="btn btn-light" @click="store">
         &nbsp;&nbsp;&nbsp;&nbsp;
         保
         &nbsp;&nbsp;
@@ -36,6 +36,29 @@
 
   </div>
 </template>
+
+
+<script>
+  export default {
+    data(){
+      return {
+        prises: []
+      }
+    },
+    computed:{
+    },
+    methods:{
+      store(){
+        this.$store.commit("update",this.prises)
+      }
+    },
+    mounted(){
+      for(let prise of this.$store.state.prises){
+        this.prises.push(Object.assign({},prise))
+      }
+    }
+  }
+</script>
 
 <style lang="scss" scoped>
   .prise{

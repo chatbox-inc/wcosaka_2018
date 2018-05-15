@@ -8,10 +8,10 @@
       <img src="~/assets/images/wapuu.png" alt="">
     </div>
     <div class="wapu__actions">
-      <div class="wapu__btn" @click="start" v-if="!timer">
+      <div class="wapu__btn" @click="start" v-if="timer.length == 0">
         START
       </div>
-      <div class="wapu__btn" @click="stop" v-if="timer">
+      <div class="wapu__btn--stop" @click="stop" v-if="timer.length > 0">
         STOP
       </div>
     </div>
@@ -22,12 +22,20 @@
   export default {
     data(){
       return {
-        colors:["red","blue","yellow","black","white"],
         index:0,
-        timer:null
+        timer:[]
       }
     },
     computed:{
+      colors(){
+        const colors = []
+        for(let prise of this.$store.state.prises){
+          if(prise.amount > 0){
+            colors.push(prise.color)
+          }
+        }
+        return colors;
+      },
       style(){
         return {
           backgroundColor: this.colors[this.index]
@@ -36,17 +44,31 @@
     },
     methods:{
       start(){
-        this.timer = setInterval(()=>{
-          if(this.colors.length > this.index){
-            this.index++
-          }else{
-            this.index = 0
-          }
-        },200)
+        if(this.timer.length === 0){
+          this.timer.push(setInterval(()=>{
+            if(this.colors.length > this.index+1){
+              this.index++
+            }else{
+              this.index = 0
+            }
+          },100))
+        }
       },
       stop(){
-        clearInterval(this.timer)
-        this.timer = null
+        for(let timer of this.timer){
+          clearInterval(timer)
+        }
+        this.timer = []
+        this.index = Math.floor(Math.random() * this.colors.length)
+
+        this.$store.commit("sub",this.colors[this.index])
+        setTimeout(()=>{
+          this.$notify({
+            title: 'おめでとう！',
+            message: this.$store.getters.byColor(this.colors[this.index]).name,
+            duration: 0
+          });
+        },100)
 
       },
     },
@@ -84,8 +106,11 @@
       left:0;
       bottom: 1em;
     }
-    &__btn{
+    &__btn,
+    &__btn--stop
+    {
       background: #31AF94;
+      box-shadow: #2B6B63 0px 10px 0px;
       color: white;
       font-size: 2em;
       width: 10em;
@@ -94,10 +119,12 @@
       padding: .5em 0;
       letter-spacing: 2px;
       border-radius: 999px;
-      box-shadow: #2B6B63 0px 10px 0px;
-
-
     }
+    &__btn--stop{
+      background: #A46DAA;
+      box-shadow: #6D4A71 0px 10px 0px;
+    }
+
 
   }
 

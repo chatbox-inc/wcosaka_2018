@@ -21,7 +21,9 @@ module.exports = {
   ** Build configuration
   */
   css: [
-    "element-ui/lib/theme-chalk/index.css",
+    "element-ui/lib/theme-chalk/input.css",
+    "element-ui/lib/theme-chalk/icon.css",
+    "element-ui/lib/theme-chalk/notification.css",
     "~/assets/scss/app.scss"
   ],
   build: {

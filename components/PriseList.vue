@@ -3,19 +3,30 @@
     <h3 class="prise__title">景品リスト</h3>
     <ul class="prise__items">
       <li
-        v-for="(item,key) in [1,1,1,1,1]"
+        v-for="(item,key) in prises"
         :key="key"
         class="prise__item"
       >
         <span
           class="prise__circle"
-          :style="{backgroundColor: '#333'}"
+          :style="{backgroundColor: item.color}"
         />
-        <span>アクリルキーホルダー</span>
+        <span>{{ item.name }}</span>
       </li>
     </ul>
   </div>
 </template>
+
+<script>
+  export default {
+    computed:{
+      prises(){
+        return this.$store.state.prises
+      }
+    }
+  }
+
+</script>
 
 <style lang="scss" scoped>
   .prise{
@@ -26,6 +37,7 @@
       text-align: center;
     }
     &__items{
+      text-align: left;
       list-style: none;
       padding: 0;
     }

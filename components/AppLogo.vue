@@ -97,7 +97,7 @@
       height: 300px;
       margin-top: -150px;
       margin-left: -150px;
-      background: red;
+      background: #DE3047;
       z-index: 10;
     }
     &__actions{
@@ -110,7 +110,8 @@
     &__btn,
     &__btn--stop
     {
-      background: #31AF94;
+      /*background: #31AF94;*/
+      background: #309c81;
       box-shadow: #2B6B63 0px 10px 0px;
       color: white;
       font-size: 2em;

@@ -24,27 +24,27 @@ const defaultData = [
   {
     name: "サーモスタンブラー",
     amount: 50,
-    color: "#D31838"
+    color: "#DE3047"
   },
   {
     name: "特製タオル",
     amount: 50,
-    color: "#Fd7508"
+    color: "#FF8900"
   },
   {
     name: "アクリルキーホルダー",
     amount: 50,
-    color: "#7765E6"
+    color: "#8B7FEB"
   },
   {
     name: "マスキングテープ",
     amount: 200,
-    color: "#9AC49C"
+    color: "#A9CB24"
   },
   {
     name: "記念テープ",
     amount: 200,
-    color: "#1691C0"
+    color: "#0EA3CC"
   },
 ]
 

@@ -82,7 +82,8 @@
     &__noren{
       position: absolute;
       top:0;
-      left: 5px;
+      left: 50%;
+      transform: translateX(-50%);
     }
     &__wapu{
       position: relative;

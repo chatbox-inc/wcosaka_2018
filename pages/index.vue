@@ -83,5 +83,10 @@ export default {
 </script>
 
 <style>
+  @font-face{
+    font-family:element-icons;
+    font-display: swap;
+    font-weight:400;font-style:normal
+  }
 
 </style>

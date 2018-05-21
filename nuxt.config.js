@@ -22,9 +22,6 @@ module.exports = {
   ** Build configuration
   */
   css: [
-    "element-ui/lib/theme-chalk/input.css",
-    "element-ui/lib/theme-chalk/icon.css",
-    "element-ui/lib/theme-chalk/notification.css",
     "~/assets/scss/app.scss"
   ],
   build: {
@@ -35,14 +32,9 @@ module.exports = {
     //   analyzerMode: 'static'
     // },
     extend (config, { isDev, isClient }) {
-      config.module.rules.push({
-        test: /\.svg$/,
-        loader: 'vue-svg-loader', // `vue-svg` for webpack 1.x
-        options: {
-          // optional [svgo](https://github.com/svg/svgo) options
-          svgo: {
-            plugins: [{ removeDoctype: true }, { removeComments: true }]
-          }
+      config.module.rules.forEach((rule) => {
+        if (rule.test.toString() === '/\\.(png|jpe?g|gif|svg)$/'){
+          rule.options.limit = 100000
         }
       })
       if (isDev && isClient) {

@@ -28,9 +28,9 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
-    // analyze: {
-    //   analyzerMode: 'static'
-    // },
+    analyze: {
+      analyzerMode: 'static'
+    },
     extend (config, { isDev, isClient }) {
       config.module.rules.forEach((rule) => {
         if (rule.test.toString() === '/\\.(png|jpe?g|gif|svg)$/'){
@@ -48,7 +48,7 @@ module.exports = {
     }
   },
   plugins:[
-    "~/plugins/index.js"
+    // "~/plugins/index.js"
   ],
   modules:[
     '@nuxtjs/pwa',

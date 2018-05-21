@@ -4,9 +4,11 @@ import {
   Input,
   Icon
 } from 'element-ui'
+// import Notification from '../node_modules/element-ui/packages/notification/index.js'
 
 export default () => {
-  Vue.use(Icon)
-  Vue.use(Input)
+  // Vue.use(ElemntUI)
+  // Vue.use(Icon)
+  // Vue.use(Input)
   Vue.prototype.$notify = Notification
 }

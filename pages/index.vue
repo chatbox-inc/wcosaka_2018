@@ -20,34 +20,6 @@ import PriseList from '~/components/PriseList.vue'
 import PriseSetting from '~/components/PriseSetting.vue'
 import AppLogo from '~/components/AppLogo.vue'
 
-const defaultData = [
-  {
-    name: "サーモスタンブラー",
-    amount: 50,
-    color: "#DE3047"
-  },
-  {
-    name: "特製タオル",
-    amount: 50,
-    color: "#FF8900"
-  },
-  {
-    name: "アクリルキーホルダー",
-    amount: 50,
-    color: "#8B7FEB"
-  },
-  {
-    name: "マスキングテープ",
-    amount: 200,
-    color: "#A9CB24"
-  },
-  {
-    name: "記念テープ",
-    amount: 200,
-    color: "#0EA3CC"
-  },
-]
-
 export default {
   components: {
     AppLogo,
@@ -75,7 +47,7 @@ export default {
       if(data){
         this.$store.commit("update",JSON.parse(data))
       }else{
-        this.$store.commit("update",defaultData)
+        this.$store.commit("update")
       }
     }
   }

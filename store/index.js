@@ -1,5 +1,33 @@
 import Vuex from 'vuex'
 
+const default_values = [
+  {
+    name: "サーモスタンブラー",
+    amount: 50,
+    color: "#DE3047"
+  },
+  {
+    name: "特製タオル",
+    amount: 50,
+    color: "#FF8900"
+  },
+  {
+    name: "アクリルキーホルダー",
+    amount: 50,
+    color: "#8B7FEB"
+  },
+  {
+    name: "マスキングテープ",
+    amount: 200,
+    color: "#A9CB24"
+  },
+  {
+    name: "記念テープ",
+    amount: 200,
+    color: "#0EA3CC"
+  },
+]
+
 const store = () => new Vuex.Store({
   state: {
     prises: []
@@ -14,12 +42,13 @@ const store = () => new Vuex.Store({
     }
   },
   mutations: {
-    update (state,values) {
+    update (state,_values = null) {
+      const values = _values || default_values
       state.prises = []
       for(let prise of values){
         state.prises.push(Object.assign({},prise))
       }
-      if(localStorage){
+      if(_values && localStorage){
         localStorage.setItem("GAMEDATA",JSON.stringify(values))
       }
     },

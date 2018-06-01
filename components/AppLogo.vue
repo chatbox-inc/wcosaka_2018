@@ -59,17 +59,28 @@
           clearInterval(timer)
         }
         this.timer = []
-        this.index = Math.floor(Math.random() * this.colors.length)
 
-        this.$store.commit("sub",this.colors[this.index])
-        setTimeout(()=>{
-          this.$notify({
-            title: 'おめでとう！',
-            message: this.$store.getters.byColor(this.colors[this.index]).name,
-            duration: 0
-          });
-        },100)
 
+        console.log(this.$store.getters.getAmount())
+        let index = Math.floor(Math.random() * this.$store.getters.getAmount())
+
+        for(let i in this.$store.state.prises){
+          let prise = this.$store.state.prises[i]
+          index = index - prise.amount
+          console.log(index)
+          if(index < 0){
+            this.$store.commit("sub",prise.color)
+            setTimeout(()=>{
+              this.$notify({
+                title: 'おめでとう！',
+                message: this.$store.getters.byColor(prise.color).name,
+                duration: 0,
+                showClose: true
+              });
+            },100)
+            return;
+          }
+        }
       },
     },
     mounted(){

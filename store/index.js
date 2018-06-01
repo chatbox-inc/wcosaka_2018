@@ -39,6 +39,13 @@ const store = () => new Vuex.Store({
           return prise
         }
       }
+    },
+    getAmount:(state) => (color) => {
+      let amount = 0;
+      for(let prise of state.prises){
+        amount = amount + parseInt(prise.amount);
+      }
+      return amount
     }
   },
   mutations: {

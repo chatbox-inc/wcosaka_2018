@@ -22,15 +22,16 @@ module.exports = {
   ** Build configuration
   */
   css: [
+    "element-ui/lib/theme-chalk/index.css",
     "~/assets/scss/app.scss"
   ],
   build: {
     /*
     ** Run ESLint on save
     */
-    // analyze: {
-    //   analyzerMode: 'static'
-    // },
+    analyze: {
+      analyzerMode: 'static'
+    },
     extend (config, { isDev, isClient }) {
       config.module.rules.forEach((rule) => {
         if (rule.test.toString() === '/\\.(png|jpe?g|gif|svg)$/'){

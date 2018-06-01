@@ -22,6 +22,7 @@ module.exports = {
   ** Build configuration
   */
   css: [
+    "element-ui/lib/theme-chalk/index.css",
     "~/assets/scss/app.scss"
   ],
   build: {
@@ -48,7 +49,7 @@ module.exports = {
     }
   },
   plugins:[
-    // "~/plugins/index.js"
+    "~/plugins/index.js"
   ],
   modules:[
     '@nuxtjs/pwa',

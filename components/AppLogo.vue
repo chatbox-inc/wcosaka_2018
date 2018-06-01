@@ -60,7 +60,6 @@
         }
         this.timer = []
 
-
         console.log(this.$store.getters.getAmount())
         let index = Math.floor(Math.random() * this.$store.getters.getAmount())
 
@@ -69,6 +68,7 @@
           index = index - prise.amount
           console.log(index)
           if(index < 0){
+            this.index = i
             this.$store.commit("sub",prise.color)
             setTimeout(()=>{
               this.$notify({
